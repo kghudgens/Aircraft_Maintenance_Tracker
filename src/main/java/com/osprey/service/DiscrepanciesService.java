@@ -3,6 +3,7 @@ package com.osprey.service;
 import com.osprey.entity.Discrepancies;
 import com.osprey.repository.DiscrepancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,5 +21,9 @@ public class DiscrepanciesService {
 
     public List<Discrepancies> findAll() {
         return discrepancyRepository.findAll();
+    }
+
+    public Discrepancies createNewDiscrepancy(Discrepancies discrepancies) {
+        return discrepancyRepository.save(discrepancies);
     }
 }
