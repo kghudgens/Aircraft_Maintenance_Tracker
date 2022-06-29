@@ -11,6 +11,10 @@ public class Discrepancies {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long discrepancyID;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id")
+    private Aircraft aircraft;
+
     @NotNull
     private String title;
 
@@ -18,22 +22,25 @@ public class Discrepancies {
     private String discrepancyDescription;
 
     @NotNull
-    @OneToOne(targetEntity = Aircraft.class)
-    private int assignedAircraft;
-
-    @NotNull
     @Column(name="Active", nullable = false)
     private boolean active = false;
+
+    public Aircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Aircraft aircraft) {
+        this.aircraft = aircraft;
+    }
 
     public Discrepancies(){
 
     }
 
-    public Discrepancies(Long discrepancyID, String title, String discrepancyDescription, int assignedAircraft, boolean active) {
+    public Discrepancies(Long discrepancyID, String title, String discrepancyDescription, boolean active) {
         this.discrepancyID = discrepancyID;
         this.title = title;
         this.discrepancyDescription = discrepancyDescription;
-        this.assignedAircraft = assignedAircraft;
         this.active = active;
     }
 
@@ -59,14 +66,6 @@ public class Discrepancies {
 
     public void setDiscrepancyDescription(String discrepancyDescription) {
         this.discrepancyDescription = discrepancyDescription;
-    }
-
-    public int getAssignedAircraft() {
-        return assignedAircraft;
-    }
-
-    public void setAssignedAircraft(int assignedAircraft) {
-        this.assignedAircraft = assignedAircraft;
     }
 
     public boolean isActive() {
