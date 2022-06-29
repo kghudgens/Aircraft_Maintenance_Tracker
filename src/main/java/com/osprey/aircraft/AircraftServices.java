@@ -1,7 +1,7 @@
-package com.osprey.service;
+package com.osprey.aircraft;
 
-import com.osprey.entity.Aircraft;
-import com.osprey.repository.AircraftRepository;
+import com.osprey.aircraft.Aircraft;
+import com.osprey.aircraft.AircraftRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

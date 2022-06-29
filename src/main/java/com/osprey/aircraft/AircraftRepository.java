@@ -1,9 +1,7 @@
-package com.osprey.repository;
+package com.osprey.aircraft;
 
-import com.osprey.entity.Aircraft;
+import com.osprey.aircraft.Aircraft;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface AircraftRepository extends JpaRepository<Aircraft, Long> {
 }

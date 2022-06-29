@@ -1,7 +1,5 @@
-package com.osprey.controller;
+package com.osprey.discrepancy;
 
-import com.osprey.entity.Discrepancies;
-import com.osprey.service.DiscrepanciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,8 @@
-package com.osprey.service;
+package com.osprey.discrepancy;
 
-import com.osprey.entity.Discrepancies;
-import com.osprey.repository.DiscrepancyRepository;
+import com.osprey.discrepancy.Discrepancies;
+import com.osprey.discrepancy.DiscrepancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

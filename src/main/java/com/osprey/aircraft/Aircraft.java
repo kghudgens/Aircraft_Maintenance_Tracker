@@ -1,6 +1,6 @@
-package com.osprey.entity;
+package com.osprey.aircraft;
 
-import com.osprey.entity.Discrepancies;
+import com.osprey.discrepancy.Discrepancies;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
