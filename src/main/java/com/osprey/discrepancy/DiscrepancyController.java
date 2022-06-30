@@ -16,6 +16,10 @@ public class DiscrepancyController {
     @Autowired
     private DiscrepanciesService discrepanciesService;
 
+    public DiscrepancyController(Discrepancies discrepancies, DiscrepanciesService discrepanciesService){
+        this.discrepancies = discrepancies;
+        this.discrepanciesService = discrepanciesService;
+    }
 
     @GetMapping("/")
     public ResponseEntity<List> getAllAircraft(){
