@@ -21,4 +21,8 @@ public class AircraftServices{
         return aircraftRepository.findAll();
     }
 
+    public Aircraft findAircraftByBuno(int buno) {
+        return aircraftRepository.findAircraftByBuno(buno);
+    }
+
 }
