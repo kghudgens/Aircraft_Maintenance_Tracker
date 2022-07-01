@@ -29,4 +29,9 @@ public class AircraftController {
         return aircraftServices.findAircraftByBuno(buno);
     }
 
+    @PostMapping("/")
+    public Aircraft newAircraft(@RequestBody Aircraft aircraft){
+        return aircraftServices.save(aircraft);
+    }
+
 }
