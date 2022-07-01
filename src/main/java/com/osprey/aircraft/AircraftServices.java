@@ -25,4 +25,7 @@ public class AircraftServices{
         return aircraftRepository.findAircraftByBuno(buno);
     }
 
+    public Aircraft save(Aircraft aircraft) {
+        return aircraftRepository.save(aircraft);
+    }
 }
