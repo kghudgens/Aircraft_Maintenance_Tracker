@@ -1,9 +1,7 @@
 package com.osprey.aircraft;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +23,10 @@ public class AircraftController {
     public List<Aircraft> getAllAircraft(){
         return aircraftServices.findAll();
     }
+
+    @GetMapping("/buno/{buno}")
+    public Aircraft getAircraftByBuno(@PathVariable int buno){
+        return aircraftServices.findAircraftByBuno(buno);
+    }
+
 }
