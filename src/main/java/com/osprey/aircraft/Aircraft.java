@@ -23,6 +23,9 @@ public class Aircraft {
     @NotNull
     private String aircraftType;
 
+    @NotNull
+    private int aircraftNumber;
+
     @OneToMany(targetEntity = Discrepancies.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "AircraftDiscrepancy_ForeignKey", referencedColumnName = "buno")
     private List<Discrepancies> discrepancies;
