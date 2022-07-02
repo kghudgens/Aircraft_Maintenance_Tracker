@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 // Map to only not found http statuses
 @ResponseStatus(value= HttpStatus.NOT_FOUND)
-public class AircraftNotFoundException extends RuntimeException{
+public class ResourceNotFoundException extends RuntimeException{
 
-    AircraftNotFoundException(String message) {
+    ResourceNotFoundException(String message) {
         super(message);
     }
 
-    AircraftNotFoundException(String message, Throwable cause){
+    ResourceNotFoundException(String message, Throwable cause){
         super(message, cause);
     }
 }

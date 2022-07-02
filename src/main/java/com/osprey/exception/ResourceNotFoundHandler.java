@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.time.ZonedDateTime;
 
 @ControllerAdvice
-public class AircraftNotFoundHandler {
+public class ResourceNotFoundHandler {
 
     @ResponseBody
-    @ExceptionHandler(AircraftNotFoundException.class)
+    @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Object> handleAircraftNotFoundException(AircraftNotFoundException e){
+    public ResponseEntity<Object> handleAircraftNotFoundException(ResourceNotFoundException e){
 
-        AircraftNotFound exception = new AircraftNotFound(
+        NotFound exception = new NotFound(
                 e.getMessage(),
                 e,
                 HttpStatus.NOT_FOUND,
