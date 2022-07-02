@@ -13,8 +13,16 @@ public class AircraftServices{
     @Autowired
     private AircraftRepository aircraftRepository;
 
-    public AircraftServices(AircraftRepository aircraftRepository){
+    @Autowired
+    private Aircraft aircraft;
+
+    public AircraftServices(AircraftRepository aircraftRepository, Aircraft aircraft){
         this.aircraftRepository = aircraftRepository;
+        this.aircraft = aircraft;
+    }
+
+    public AircraftServices() {
+
     }
 
     public List<Aircraft> findAll() {
