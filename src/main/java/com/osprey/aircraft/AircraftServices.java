@@ -1,11 +1,11 @@
 package com.osprey.aircraft;
 
-import com.osprey.aircraft.Aircraft;
-import com.osprey.aircraft.AircraftRepository;
+import com.osprey.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.OptionalLong;
 
 @Service
 public class AircraftServices{
@@ -30,7 +30,10 @@ public class AircraftServices{
     }
 
     public Aircraft findAircraftByBuno(int buno) {
-        return aircraftRepository.findAircraftByBuno(buno);
+        if(aircraftRepository.findAircraftByBuno(buno) == null){
+            throw new ResourceNotFoundException("Aircraft with this BUNO does not exist in the system.");
+        }
+       return aircraftRepository.findAircraftByBuno(buno);
     }
 
     public Aircraft save(Aircraft aircraft) {
