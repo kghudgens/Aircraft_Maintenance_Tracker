@@ -6,6 +6,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "discrepancies")
 public class Discrepancies {
 
     @Id
@@ -26,14 +27,6 @@ public class Discrepancies {
     @Column(name="Active", nullable = false)
     private boolean active = false;
 
-    public Aircraft getAircraft() {
-        return aircraft;
-    }
-
-    public void setAircraft(Aircraft aircraft) {
-        this.aircraft = aircraft;
-    }
-
     public Discrepancies(){
 
     }
@@ -43,6 +36,14 @@ public class Discrepancies {
         this.title = title;
         this.discrepancyDescription = discrepancyDescription;
         this.active = active;
+    }
+
+    public Aircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Aircraft aircraft) {
+        this.aircraft = aircraft;
     }
 
     public Long getDiscrepancyID() {
