@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * The AircraftServices class represents the service layer of the API. It receives request from the AircraftController
  * and handles the request to the persistence layer.
+ *
+ * @author Kevin Hudgens
  */
 @Service
 public class AircraftServices{
@@ -41,7 +43,8 @@ public class AircraftServices{
      * determined by the manufacturer. For example, Aircraft 12, Type MV-22 Osprey, BUNO 168288
      *
      * @param buno unique aircraft identifier
-     * @return the aircraft resource that matches the buno or ResourceNotFoundException
+     * @return the aircraft resource that matches the buno
+     * @exception ResourceNotFoundException
      */
     public Aircraft findAircraftByBuno(int buno) {
         if(aircraftRepository.findAircraftByBuno(buno) == null){
@@ -51,7 +54,6 @@ public class AircraftServices{
     }
 
     /**
-     *
      * @param aircraft Payload of the aircraft to be saved, sent to the service layer from the AircraftContoller method
      * @return the aircraft resource saved
      */
