@@ -1,33 +1,62 @@
 package com.osprey.aircraft;
 
 import com.osprey.discrepancy.Discrepancies;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
-@Entity
-@Table(name="aircraft")
+@Entity(name = "Aircraft")
+@Table(name = "aircraft", schema = "aircraft")
 public class Aircraft {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name="aircraft_sequence",
+            sequenceName = "airacrft_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "aircraft_sequence"
+    )
+    @Column(
+            name="id",
+            updatable = false
+    )
     private Long id;
 
-    @NotNull
-    @Column(name="buno", length = 6)
-    @Pattern(regexp ="^[0-9]*$", message = "A Buno is a 6 digit number that represents the aircraft")
+    @Column(
+            name="buno",
+            updatable = true,
+            nullable = false,
+            length = 6,
+            unique = true
+    )
+    @Pattern(
+            regexp ="^[0-9]*$",
+            message = "A Buno is a 6 digit number that represents the aircraft"
+    )
     private int buno;
 
-    @NotNull
+    @Column(
+            name="aircraft_type",
+            updatable = true,
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String aircraftType;
 
-    @NotNull
+    @Column(
+            name = "aircraft_number",
+            updatable = true,
+            nullable = false,
+            unique = true
+    )
     private int aircraftNumber;
 
-    @OneToMany(targetEntity = Discrepancies.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "AircraftDiscrepancy_ForeignKey", referencedColumnName = "buno")
+    @OneToMany(targetEntity = Discrepancies.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "AircraftDiscrepancy_ForeignKey", referencedColumnName = "id")
     private List<Discrepancies> discrepancies;
 
     public Aircraft(){

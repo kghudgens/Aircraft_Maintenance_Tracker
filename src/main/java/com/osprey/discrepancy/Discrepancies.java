@@ -1,39 +1,59 @@
 package com.osprey.discrepancy;
 
 import com.osprey.aircraft.Aircraft;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "discrepancies")
+@Entity(name="Discrepancies")
+@Table(name = "discrepancies", schema = "aircraft")
 public class Discrepancies {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "discrepancy_sequence",
+            sequenceName = "discrepancy_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "discrepancy_sequence"
+    )
     private Long discrepancyID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "aircraft_id")
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Aircraft.class)
+    @JoinColumn(name = "id")
     private Aircraft aircraft;
 
-    @NotNull
-    private String title;
+    @Column(
+            name = "discrepancy_title",
+            updatable = false,
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String discrepancyTitle;
 
-    @NotNull
+    @Column(
+            name = "discrepancy_description",
+            updatable =true,
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
     private String discrepancyDescription;
 
-    @NotNull
-    @Column(name="Active", nullable = false)
+    @Column(
+            name="active",
+            updatable = true,
+            nullable = false
+    )
     private boolean active = false;
 
     public Discrepancies(){
 
     }
 
-    public Discrepancies(Long discrepancyID, String title, String discrepancyDescription, boolean active) {
+    public Discrepancies(Long discrepancyID, String discrepancyTitle, String discrepancyDescription, boolean active) {
         this.discrepancyID = discrepancyID;
-        this.title = title;
+        this.discrepancyTitle = discrepancyTitle;
         this.discrepancyDescription = discrepancyDescription;
         this.active = active;
     }
@@ -55,11 +75,11 @@ public class Discrepancies {
     }
 
     public String getTitle() {
-        return title;
+        return discrepancyTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.discrepancyTitle = title;
     }
 
     public String getDiscrepancyDescription() {
