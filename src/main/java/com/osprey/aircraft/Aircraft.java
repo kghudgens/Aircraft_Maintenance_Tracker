@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity(name = "Aircraft")
-@Table(name = "aircraft", schema = "aircraft")
+@Table(name = "aircraft")
 public class Aircraft {
 
     @Id
@@ -32,10 +32,6 @@ public class Aircraft {
             nullable = false,
             length = 6,
             unique = true
-    )
-    @Pattern(
-            regexp ="^[0-9]*$",
-            message = "A Buno is a 6 digit number that represents the aircraft"
     )
     private int buno;
 
@@ -63,10 +59,11 @@ public class Aircraft {
 
     }
 
-    public Aircraft(int buno, String aircraftType, List<Discrepancies> discrepancies) {
+    public Aircraft(int buno, String aircraftType, List<Discrepancies> discrepancies, int aircraftNumber) {
         this.buno = buno;
         this.aircraftType = aircraftType;
         this.discrepancies = discrepancies;
+        this.aircraftNumber = aircraftNumber;
     }
 
     public Long getId() {
