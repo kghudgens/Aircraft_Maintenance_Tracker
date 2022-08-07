@@ -5,7 +5,7 @@ import com.osprey.aircraft.Aircraft;
 import javax.persistence.*;
 
 @Entity(name="Discrepancies")
-@Table(name = "discrepancies", schema = "aircraft")
+@Table(name = "discrepancies")
 public class Discrepancies {
 
     @Id
@@ -51,11 +51,11 @@ public class Discrepancies {
 
     }
 
-    public Discrepancies(Long discrepancyID, String discrepancyTitle, String discrepancyDescription, boolean active) {
-        this.discrepancyID = discrepancyID;
+    public Discrepancies(String discrepancyTitle, String discrepancyDescription, boolean active, Aircraft aircraft) {
         this.discrepancyTitle = discrepancyTitle;
         this.discrepancyDescription = discrepancyDescription;
         this.active = active;
+        this.aircraft = aircraft;
     }
 
     public Aircraft getAircraft() {
