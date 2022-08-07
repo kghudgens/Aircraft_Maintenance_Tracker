@@ -26,6 +26,11 @@ public class AircraftController {
         this.aircraft = aircraft;
     }
 
+    /**
+     *  Get Method that returns all aircraft instances saved to the database
+     *
+     * @return list of aircraft objects
+     */
     @GetMapping("/")
     public List<Aircraft> getAllAircraft(){
         return aircraftServices.findAll();
