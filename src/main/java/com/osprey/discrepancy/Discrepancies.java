@@ -1,5 +1,6 @@
 package com.osprey.discrepancy;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.osprey.aircraft.Aircraft;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Discrepancies {
     )
     private Long discrepancyID;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Aircraft.class)
     @JoinColumn(name = "id")
     private Aircraft aircraft;

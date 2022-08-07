@@ -1,5 +1,6 @@
 package com.osprey.aircraft;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.osprey.discrepancy.Discrepancies;
 
 import javax.persistence.*;
@@ -51,6 +52,7 @@ public class Aircraft {
     )
     private int aircraftNumber;
 
+    @JsonManagedReference
     @OneToMany(targetEntity = Discrepancies.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "AircraftDiscrepancy_ForeignKey", referencedColumnName = "id")
     private List<Discrepancies> discrepancies;
