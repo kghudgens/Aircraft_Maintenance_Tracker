@@ -1,8 +1,9 @@
 package com.osprey.configuration;
 
-import com.osprey.aircraft.Aircraft;
-import com.osprey.aircraft.AircraftServices;
-import com.osprey.discrepancy.Discrepancies;
+import com.osprey.entities.AircraftEntity;
+import com.osprey.entities.DiscrepancyEntity;
+import com.osprey.services.AircraftService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -12,13 +13,13 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfiguration {
 
     @Bean
-    public Aircraft aircraftConfiguration(){
-        return new Aircraft();
+    public AircraftEntity aircraftConfiguration() {
+        return new AircraftEntity();
     }
 
     @Bean
-    public Discrepancies discrepanciesConfiguration(){
-        return new Discrepancies();
+    public DiscrepancyEntity discrepanciesConfiguration() {
+        return new DiscrepancyEntity();
     }
 
 }
