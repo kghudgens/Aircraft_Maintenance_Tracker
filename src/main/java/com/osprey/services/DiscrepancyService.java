@@ -1,28 +1,28 @@
-package com.osprey.discrepancy;
+package com.osprey.services;
 
-import com.osprey.discrepancy.Discrepancies;
-import com.osprey.discrepancy.DiscrepancyRepository;
+import com.osprey.entities.DiscrepancyEntity;
+import com.osprey.repository.DiscrepancyRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DiscrepanciesService {
+public class DiscrepancyService {
 
     @Autowired
     private DiscrepancyRepository discrepancyRepository;
 
-
-    public DiscrepanciesService(DiscrepancyRepository discrepancyRepository){
+    public DiscrepancyService(DiscrepancyRepository discrepancyRepository) {
         this.discrepancyRepository = discrepancyRepository;
     }
 
-    public List<Discrepancies> findAll() {
+    public List<DiscrepancyEntity> findAll() {
         return discrepancyRepository.findAll();
     }
 
-    public Discrepancies createNewDiscrepancy(Discrepancies discrepancies) {
+    public DiscrepancyEntity createNewDiscrepancy(DiscrepancyEntity discrepancies) {
         return discrepancyRepository.save(discrepancies);
     }
 }

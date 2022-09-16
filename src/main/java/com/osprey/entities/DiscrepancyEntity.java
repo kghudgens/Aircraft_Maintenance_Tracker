@@ -1,70 +1,49 @@
-package com.osprey.discrepancy;
+package com.osprey.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.osprey.aircraft.Aircraft;
 
 import javax.persistence.*;
 
-@Entity(name="Discrepancies")
+@Entity(name = "Discrepancies")
 @Table(name = "discrepancies")
-public class Discrepancies {
+public class DiscrepancyEntity {
 
     @Id
-    @SequenceGenerator(
-            name = "discrepancy_sequence",
-            sequenceName = "discrepancy_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "discrepancy_sequence"
-    )
+    @SequenceGenerator(name = "discrepancy_sequence", sequenceName = "discrepancy_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discrepancy_sequence")
     private Long discrepancyID;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Aircraft.class)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = AircraftEntity.class)
     @JoinColumn(name = "id")
-    private Aircraft aircraft;
+    private AircraftEntity aircraft;
 
-    @Column(
-            name = "discrepancy_title",
-            updatable = false,
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
+    @Column(name = "discrepancy_title", updatable = false, nullable = false, columnDefinition = "TEXT")
     private String discrepancyTitle;
 
-    @Column(
-            name = "discrepancy_description",
-            updatable =true,
-            nullable = false,
-            columnDefinition = "TEXT"
-    )
+    @Column(name = "discrepancy_description", updatable = true, nullable = false, columnDefinition = "TEXT")
     private String discrepancyDescription;
 
-    @Column(
-            name="active",
-            updatable = true,
-            nullable = false
-    )
+    @Column(name = "active", updatable = true, nullable = false)
     private boolean active = false;
 
-    public Discrepancies(){
+    public DiscrepancyEntity() {
 
     }
 
-    public Discrepancies(String discrepancyTitle, String discrepancyDescription, boolean active, Aircraft aircraft) {
+    public DiscrepancyEntity(String discrepancyTitle, String discrepancyDescription, boolean active,
+            AircraftEntity aircraft) {
         this.discrepancyTitle = discrepancyTitle;
         this.discrepancyDescription = discrepancyDescription;
         this.active = active;
         this.aircraft = aircraft;
     }
 
-    public Aircraft getAircraft() {
+    public AircraftEntity getAircraft() {
         return aircraft;
     }
 
-    public void setAircraft(Aircraft aircraft) {
+    public void setAircraft(AircraftEntity aircraft) {
         this.aircraft = aircraft;
     }
 
@@ -99,6 +78,5 @@ public class Discrepancies {
     public void setActive(boolean active) {
         this.active = active;
     }
-
 
 }
